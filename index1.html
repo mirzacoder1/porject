@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Clock</title>
+    <script>
+        let a;
+        let date;
+        let time;
+        const options = { weekmonth: 'long', year: 'numeric', month: 'long', month: 'numeric' };
+        setInterval(() => {
+            a = new Date();
+            date = a.toLocaleDateString(undefined, options);
+            time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+            document.getElementById('time').innerHTML = time + "<br>on " + date;
+        }, 1000);
+    </script>
+
+    <style>
+        body {
+            background-color: aqua;
+            font-size: medium;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4">
+        <div class="jumbotron">
+            <h1 class="display-4">Current time is: <span id="time"></span></h1>
+            <p class="lead">I am Mirza Zabbar Yunus and This clock is created by me with the mentorship of
+                "CodeWithHarry!"</p>
+            <hr class="my-4">
+            <p>We are here to show you the time for different countries</p>
+            <a class="btn btn-primary btn-lg" href="https://www.google.com" role="button">Browse Times</a>
+        </div>
+        <!-- <div id="clock"></div> -->
+    </div>
+
+    <script>
+        setInterval(showTime, 1000);
+        function showTime() {
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            let day = time.getDay();
+            let month = time.getMonth();
+            let date = time.getDate();
+            let year = time.getFullYear();
+            am_pm = "AM";
+
+            if (hour > 12) {
+                hour -= 12;
+                am_pm = "PM";
+            }
+            if (hour == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+
+            if (month == 0) {
+                month = "Jan";
+            }
+            else if (month == 1) {
+                month = "Feb";
+            }
+            else if (month == 2) {
+                month = "Mar";
+            }
+            else if (month == 3) {
+                month = "Apr";
+            }
+            else if (month == 4) {
+                month = "May";
+            }
+            else if (month == 5) {
+                month = "Jun";
+            }
+            else if (month == 6) {
+                month = "Jul";
+            }
+            else if (month == 7) {
+                month = "Aug";
+            }
+            else if (month == 8) {
+                month = "Sept";
+            }
+            else if (month == 9) {
+                month = "Oct";
+            }
+            else if (month == 10) {
+                month = "Nov";
+            }
+            else {
+                month = "Dec";
+            }
+
+            if (day == 0) {
+                day = "Sun\n";
+            }
+            else if (day == 1) {
+                day = "Mon\n";
+            }
+            else if (day == 2) {
+                day = "Tues\n";
+            }
+            else if (day == 3) {
+                day = "Wed\n";
+            }
+            else if (day == 4) {
+                day = "Thurs\n";
+            }
+            else if (day == 5) {
+                day = "Fri\n";
+            }
+            else {
+                day = "Sat\n";
+            }
+
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            let currentTime = hour + ":"
+                + min + ":" + sec + " " + am_pm + " " + "on" + " " + day + "," + month + " " + date + "," + year;
+
+            document.getElementById("time")
+                .innerHTML = currentTime;
+        }
+
+        showTime();
+    </script>
+</body>
+
+</html>
